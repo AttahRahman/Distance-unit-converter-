@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All length converter</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+        <style>
+            *{
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    /* background: #e8eff7; */
+    background: url(2.jpg);
+    background-size: cover;
+}
+
+
+.length-converter{
+    padding: 20px;
+    /* background: #fff;
+    box-shadow: 0px 0px 2px rgb(0 0 0 / 50%);
+    border-radius: 2px; */
+    border-radius: 15px;
+    background-color:  rgba(0, 2, 0, 0.4);
+    box-shadow: 0 0 10px 0 rgba(8, 0, 0, 0.4);
+    border: 0;
+}
+
+.field{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    margin-bottom: 20px;
+}
+.field:last-child{
+    margin-bottom: 0;
+}
+.field label{
+    min-width: 70px;
+    height: 30px;
+    font-weight: bolder;
+    color: white;
+}
+
+input{
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+}
+
+.center-width{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.center-width h2{
+    font-size: 70px;
+}
+
+.center-width p{
+    font-size: 20px;
+    font-style: italic;
+}
+        </style>
+
+<body>
+    <div class="container">
+        <div class="center-width">
+            <h2>Length converter</h2>
+            <p>Type a value in any of the fields to <br >
+                convert between length measurements:</p>
+        </div>
+        <div class="length-converter">
+            <div class="fields">
+                <div class="field">
+                    <label>Cm:</label>
+                    <input type="number" placeholder="cm" id="inputcm" oninput="lengthConverter(this.id, this.value)" onchange="lengthConverter(this.id, this.value)">
+                </div>
+                
+                <div class="field">
+                    <label>Inches:</label>
+                    <input type="number" placeholder="Inches" id="inputInches" oninput="lengthConverter(this.id, this.value)" onchange="lengthConverter(this.id, this.value)">
+                </div>
+
+                <div class="field">
+                    <label>Feet:</label>
+                    <input type="number" placeholder="Feet" id="inputFeet" oninput="lengthConverter(this.id, this.value)" onchange="lengthConverter(this.id, this.value)">
+                </div>
+                
+                <div class="field">
+                    <label>Meter:</label>
+                    <input type="number" placeholder="Meters" id="inputMeters" oninput="lengthConverter(this.id, this.value)" onchange="lengthConverter(this.id, this.value)">
+                </div>
+
+                <div class="field">
+                    <label>Kilometers:</label>
+                    <input type="number" placeholder="Kilometers" id="inputKilometers" oninput="lengthConverter(this.id, this.value)" onchange="lengthConverter(this.id, this.value)">
+                </div>
+                
+                <div class="field">
+                    <label>Miles:</label>
+                    <input type="number" placeholder="Miles" id="inputMiles" oninput="lengthConverter(this.id, this.value)" onchange="lengthConverter(this.id, this.value)">
+                </div>
+
+                <div class="field">
+                    <label>Yards:</label>
+                    <input type="number" placeholder="Yards" id="inputYards" oninput="lengthConverter(this.id, this.value)" onchange="lengthConverter(this.id, this.value)">
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    <!-- <script src="main.js"></script> -->
+    <script>
+        alert("Welcome to Rahman's Distance Conversion app")
+function lengthConverter(source, valNum) {
+    valNum = parseFloat(valNum);
+    var inputcm = document.getElementById("inputcm");
+    var inputInches = document.getElementById("inputInches");
+    var inputFeet = document.getElementById("inputFeet");
+    var inputMeters = document.getElementById("inputMeters");
+    var inputKilometers = document.getElementById("inputKilometers");
+    var inputMiles = document.getElementById("inputMiles");
+    var inputYards = document.getElementById("inputYards");
+            
+    if(source == "inputcm") {
+        inputInches.value = (valNum*0.39370).toFixed(2);
+        inputFeet.value = (valNum*0.032808).toFixed(3);
+        inputMeters.value = (valNum/100).toFixed(3);
+        inputKilometers.value = (valNum/100000).toFixed(6);
+        inputMiles.value = (valNum*0.0000062137).toFixed(6);
+        inputYards.value = (valNum*0.010936).toFixed(3);
+    }
+    if(source == "inputInches") {
+        inputcm.value = (valNum/0.39370).toFixed(2);
+        inputFeet.value = (valNum*0.083333).toFixed(3);
+        inputMeters.value = (valNum/39.370).toFixed(3);
+        inputKilometers.value = (valNum/39370).toFixed(6);
+        inputMiles.value = (valNum*0.000015783).toFixed(6);
+        inputYards.value = (valNum*0.0277778).toFixed(3);
+    }
+    if(source == "inputFeet") {
+        inputMeters.value = (valNum/3.2808).toFixed(2);
+        inputInches.value = (valNum*12).toFixed(2);
+        inputcm.value = (valNum*0.032808).toFixed();
+        inputYards.value = (valNum*0.33333).toFixed(2);
+        inputKilometers.value = (valNum/3280.8).toFixed(5);
+        inputMiles.value = (valNum*0.00018939).toFixed(6);
+    }
+    if(source == "inputMeters") {
+        inputFeet.value = (valNum*3.2808).toFixed(2);
+        inputInches.value = (valNum*39.370).toFixed(2);
+        inputcm.value = (valNum/0.01).toFixed();
+        inputYards.value = (valNum*1.0936).toFixed(2);
+        inputKilometers.value = (valNum/1000).toFixed(5);
+        inputMiles.value = (valNum*0.00062137).toFixed(5);
+    }
+    if(source == "inputKilometers") {
+        inputFeet.value = (valNum*3280.8).toFixed();
+        inputInches.value = (valNum*39370).toFixed();
+        inputcm.value = (valNum*100000).toFixed();
+        inputYards.value = (valNum*1093.6).toFixed();
+        inputMeters.value = (valNum*1000).toFixed();
+        inputMiles.value = (valNum*0.62137).toFixed(2);
+    }
+    if(source == "inputMiles") {
+        inputFeet.value = (valNum*5280).toFixed();
+        inputInches.value = (valNum*63360).toFixed();
+        inputcm.value = (valNum/0.0000062137).toFixed();
+        inputYards.value = (valNum*1760).toFixed();
+        inputMeters.value = (valNum/0.00062137).toFixed();
+        inputKilometers.value = (valNum/0.62137).toFixed(2);
+    }
+    if(source == "inputYards") {
+        inputFeet.value = (valNum*3).toFixed();
+        inputInches.value = (valNum*36).toFixed();
+        inputcm.value = (valNum/0.010936).toFixed();
+        inputKilometers.value = (valNum/1093.6).toFixed(5);
+        inputMeters.value = (valNum/1.0936).toFixed(2);
+        inputMiles.value = (valNum/0.62137).toFixed(5);
+    }
+}
+    </script>
+    
+</body>
+</html>
